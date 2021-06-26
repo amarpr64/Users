@@ -6,8 +6,8 @@ import { User } from "../User";
   styleUrls: ["./userlist.component.css"]
 })
 export class UserlistComponent implements OnInit {
-  first_name: string;
-  last_name: string;
+  firstname: string;
+  lastname: string;
   salary: string;
   id: number = 0;
   editId: number;
@@ -27,18 +27,18 @@ export class UserlistComponent implements OnInit {
     this.id = this.id + 1;
     let objHero = new User();
     objHero.id = this.id;
-    objHero.first_name = this.first_name;
-    objHero.last_name = this.last_name;
+    objHero.first_name = this.firstname;
+    objHero.last_name = this.lastname;
     objHero.salary = this.salary;
     this.Users.push(objHero);
     localStorage.setItem("datasource", JSON.stringify(this.Users));
-    this.first_name = "";
-    this.last_name = "";
+    this.firstname = "";
+    this.lastname = "";
     this.salary = "";
   }
   Edit(user: User) {
-    this.first_name = user.first_name;
-    this.last_name = user.last_name;
+    this.firstname = user.first_name;
+    this.lastname = user.last_name;
     this.salary = user.salary;
     this.isShowUpdate = true;
     this.isAddShow = false;
@@ -53,17 +53,17 @@ export class UserlistComponent implements OnInit {
   }
 
   Update() {
-    let objHero = new User();
-    objHero.id = this.id;
-    objHero.first_name = this.first_name;
-    objHero.last_name = this.last_name;
-    objHero.salary = this.salary;
+    let obj = new User();
+    obj.id = this.id;
+    obj.first_name = this.firstname;
+    obj.last_name = this.lastname;
+    obj.salary = this.salary;
     let getIndex = this.Users.findIndex((x) => x.id === this.editId);
-    this.Users[getIndex] = objHero;
+    this.Users[getIndex] = obj;
     this.isShowUpdate = false;
     this.isAddShow = true;
-    this.first_name = "";
-    this.last_name = "";
+    this.firstname = "";
+    this.lastname = "";
     this.salary = "";
   }
 }
