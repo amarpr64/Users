@@ -18,12 +18,12 @@
           <td><input type="text" class="form-control" [(ngModel)]="salary" /></td>
         </tr>
         <tr>
-          <td colspan="2" *ngIf="isAddShow">
+          <td colspan="2" *ngIf="isAddUser">
             <button (click)="addUser()">Add User</button>
           </td>
         </tr>
         <tr>
-          <td *ngIf="isShowUpdate"><button (click)="Update()">Update</button></td>
+          <td *ngIf="isUpdateUser"><button (click)="Update()">Update</button></td>
         </tr>
       </tbody>
     </table>

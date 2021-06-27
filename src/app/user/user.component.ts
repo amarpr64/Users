@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from "../user";
+import { User } from "../User";
 
 @Component({
   selector: 'app-user',
@@ -11,11 +11,11 @@ export class UserComponent implements OnInit {
   constructor() {
     this.firstname ="";
     this.lastname = "";
-    this.salary ="";
+    this.salary =0;
     this.id = 0;
     this.editId = 0;
-    this.isShowUpdate = false;
-    this.isAddShow = true;
+    this.isUpdateUser = false;
+    this.isAddUser = true;
     this.Users = [];
     
     let objUsers = localStorage.getItem("datasource");
@@ -29,11 +29,11 @@ export class UserComponent implements OnInit {
 
   firstname: string ;
   lastname: string ;
-  salary: string;
+  salary: number;
   id: number ;
   editId: number ;
-  isShowUpdate: boolean;
-  isAddShow: boolean ;
+  isUpdateUser: boolean;
+  isAddUser: boolean ;
   Users: Array<User>;
  
   addUser() {
@@ -47,14 +47,14 @@ export class UserComponent implements OnInit {
     localStorage.setItem("datasource", JSON.stringify(this.Users));
     this.firstname = "";
     this.lastname = "";
-    this.salary = "";
+    this.salary = 0;
   }
   Edit(user: User) {
     this.firstname = user.firstname;
     this.lastname = user.lastname;
     this.salary = user.salary;
-    this.isShowUpdate = true;
-    this.isAddShow = false;
+    this.isUpdateUser = true;
+    this.isAddUser = false;
     this.editId = user.id;
   }
 
@@ -73,10 +73,10 @@ export class UserComponent implements OnInit {
     objUser.salary = this.salary;
     let getIndex = this.Users.findIndex((x) => x.id === this.editId);
     this.Users[getIndex] = objUser;
-    this.isShowUpdate = false;
-    this.isAddShow = true;
+    this.isUpdateUser = false;
+    this.isAddUser = true;
     this.firstname = "";
     this.lastname = "";
-    this.salary = "";
+    this.salary = 0;
   }
 }
